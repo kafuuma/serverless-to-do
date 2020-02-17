@@ -51,12 +51,14 @@ export class Todos extends React.PureComponent<TodosProps, TodosState> {
         name: this.state.newTodoName,
         dueDate
       })
+      const todos = await getTodos(this.props.auth.getIdToken())
       this.setState({
-        todos: [...this.state.todos, newTodo],
+        todos: [...todos],
         newTodoName: ''
       })
-    } catch {
+    } catch(e) {
       alert('Todo creation failed')
+      console.log('error', e)
     }
   }
 

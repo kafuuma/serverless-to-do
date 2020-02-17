@@ -69,7 +69,10 @@ export async function getUploadUrl(
       'Authorization': `Bearer ${idToken}`
     }
   })
+  console.log(response.data.uploadUrl
+    )
   return response.data.uploadUrl
+
 }
 
 export async function uploadFile(uploadUrl: string, file: Buffer): Promise<void> {
